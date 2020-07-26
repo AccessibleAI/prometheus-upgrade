@@ -15,5 +15,5 @@ kubectl apply -f manifests/
 
 
 
-#clean resources
+####clean resources
 kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
