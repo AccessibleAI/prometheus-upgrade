@@ -1,0 +1,67 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    prometheus: k8s
+  name: k8s
+  namespace: cnvrg
+spec:
+  storage:
+    volumeClaimTemplate:
+      metadata:
+        name: storage-prometheus-pv
+      spec:
+        storageClassName: local-storage
+        accessModes: [ ReadWriteOnce ]
+        resources:
+          requests:
+            storage: 40Gi
+  nodeSelector:
+    kubernetes.io/os: linux
+  image: quay.io/prometheus/prometheus:v2.15.2
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector: {}
+  replicas: 1
+  resources:
+    requests:
+      memory: 400Mi
+  ruleSelector:
+    matchLabels:
+      prometheus: k8s
+      role: alert-rules
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+  serviceAccountName: prometheus-k8s
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector: {}
+  version: v2.15.2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: storage-prometheus-pv
+  namespace: cnvrg
+  labels:
+    for: prometheus
+spec:
+  capacity:
+    storage: 40Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: "/var/cnvrg/prometheus"
+  claimRef:
+     namespace: cnvrg
+     name: storage-prometheus-pv-prometheus-k8s-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-172-31-52-15  #esl
