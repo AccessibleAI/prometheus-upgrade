@@ -53,10 +53,11 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: "/var/cnvrg/prometheus"
+    path: "/var/cnvrg/prometheus" #esl make sure its the correct path
   claimRef:
      namespace: cnvrg
-     name: storage-prometheus-pv-prometheus-k8s-0
+     name: prometheus-k8s-db-prometheus-k8s-0
+     #storage-prometheus-pv-prometheus-k8s-0
   nodeAffinity:
     required:
       nodeSelectorTerms:
