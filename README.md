@@ -1,8 +1,8 @@
 #### **Delete old prometheus installation**
 ```
 kubectl delete -f promethus_to_delete.yaml
-kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
 kubectl -n cnvrg delete pvc storage-prometheus-cnvrg-prometheus-operator-prometheus-0
+kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
 #kubectl -n cnvrg  delete  pvc prometheus-cnvrg-prometheus-operator-prometheus-db-prometheus-cnvrg-prometheus-operator-prometheus-0
 ```
 #### **Install New prometheus installation**
