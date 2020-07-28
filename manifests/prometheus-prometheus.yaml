@@ -57,7 +57,7 @@ spec:
   claimRef:
      namespace: cnvrg
      name: prometheus-k8s-db-prometheus-k8s-0
-     #storage-prometheus-pv-prometheus-k8s-0
+     #storage-prometheus-pv-prometheus-k8s-0 #esl make sure its the correct name
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -65,4 +65,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - ip-172-31-52-15  #esl
+          - ip-172-31-52-15  #esl make sure its the correct global.node name

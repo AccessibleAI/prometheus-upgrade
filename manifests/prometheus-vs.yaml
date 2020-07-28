@@ -5,7 +5,7 @@ metadata:
   namespace: cnvrg
 spec:
   hosts:
-  - prometheus.mini.cnvrg.io #esl
+  - prometheus.mini.cnvrg.io #esl insert domain name
   gateways:
   - cnvrg-gateway
   http:
