@@ -16,7 +16,15 @@ spec:
         app: grafana
     spec:
       containers:
-      - env: []
+      - env:
+          - name: GF_AUTH_BASIC_ENABLED
+            value: "false"
+          - name: GF_AUTH_ANONYMOUS_ENABLED
+            value: "true"
+          - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+            value: Admin
+          - name: GF_SECURITY_ALLOW_EMBEDDING
+            value: "true"
         image: grafana/grafana:6.6.0
         name: grafana
         ports:
