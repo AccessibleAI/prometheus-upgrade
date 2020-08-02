@@ -4,14 +4,14 @@ kubectl delete -f promethus_to_delete.yaml
 kubectl -n cnvrg  get pvc | grep prometheus | awk '{print $1}' | xargs kubectl -n cnvrg delete pvc $1
 kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
 ```
-#### **For installation on Hostpath Directory Istio**
+#### **For installation on Hostpath Directory with Istio**
 - Change nodeaffinity in prometheus-prometheus.yaml file
 - Make sure the local path is correct 
 - Change hosts to correct domain_name in prometheus-vs.yaml file
 ```
 rm manifests/prometheus-prometheus_cloud.yml
 ```
-#### **For installation on Cloud instance Istio (using default storage class)**
+#### **For installation on instance using default storageclass other then hostpath - Installed with Istio**
 - Change hosts to correct domain_name in prometheus-vs.yaml file
 ```
 rm manifests/prometheus-prometheus.yml
