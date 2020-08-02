@@ -10,14 +10,12 @@ kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
 #### Change hosts to correct domain_name in prometheus-vs.yaml file
 ```
 rm manifests/prometheus-prometheus_cloud.yml
-
-
 ```
 #### **Install New prometheus installation on Cloud instance Istio (using default storage class)**
 #### Change hosts to correct domain_name in prometheus-vs.yaml file
 ```
 rm manifests/prometheus-prometheus.yml
-
+```
 ```
 kubectl apply -f manifests/setup
 kubectl apply -f manifests/
