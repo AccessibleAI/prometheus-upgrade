@@ -5,7 +5,7 @@ kubectl -n cnvrg  get pvc | grep prometheus | awk '{print $1}' | xargs kubectl -
 kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
 ```
 #### **For installation on Hostpath Directory Istio**
-- Change nodeaffinity in prometheus-prometheus.yaml filei 
+- Change nodeaffinity in prometheus-prometheus.yaml file
 - Make sure the local path is correct 
 - Change hosts to correct domain_name in prometheus-vs.yaml file
 ```
