@@ -23,7 +23,12 @@ kubectl apply -f manifests/setup
 kubectl apply -f manifests/
 until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
 ```
-
+#### **Verify Installation completed successfully**
+Run the following, until it finishes:
+```
+until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+```
+Go to the grafana.<your domain> and check on the info page (on the buttom of the left pane) version is Grafana v6.6.0 (5c11bbdfb4)
 
 #### clean resources
 ```
