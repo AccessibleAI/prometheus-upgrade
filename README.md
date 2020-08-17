@@ -33,7 +33,7 @@ Go to the grafana.<your domain> and check on the info page (on the buttom of the
 #### **In some clusters there might be a bug based on the provider - to fix the bug run command below**
 Fix the url so that if fits your domain with the correct http/https header:
 ```
-url=[http/https]://prometheus.[domain-name].cnvrg.io; if (( $(curl -s  $url/targets | grep -i 'server returned HTTP status 401 Unauthorized' | wc -l) > 0 )); then echo 'yo' ; kubectl -n cnvrg get servicemonitor kubelet -o yaml  | grep -v '{"apiVersion":"monitoring.coreos.com/v1"'  | sed 's/https/http/g' | kubectl -n cnvrg apply -f -; fi
+url=[http/https]://prometheus.[domain-name].cnvrg.io; if (( $(curl -s  $url/targets | grep -i 'server returned HTTP status 401 Unauthorized' | wc -l) > 0 )); then echo 'applying fix' ; kubectl -n cnvrg get servicemonitor kubelet -o yaml  | grep -v '{"apiVersion":"monitoring.coreos.com/v1"'  | sed 's/https/http/g' | kubectl -n cnvrg apply -f -; fi
 ```
 
 #### clean resources
