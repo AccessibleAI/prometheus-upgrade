@@ -11,8 +11,6 @@ spec:
       metadata:
         name: storage-prometheus-pv
       spec:
-        storageClassName: default
-        accessModes: [ ReadWriteOnce ]
         resources:
           requests:
             storage: 40Gi
